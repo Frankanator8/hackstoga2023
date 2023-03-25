@@ -7,7 +7,7 @@ from weapon.Fireball import Fireball
 
 class FireSpirit(Monster):
     def __init__(self, x, y, player, entityHandler):
-        super().__init__(x, y, "e", TextureSet.load_from_folder("firespirit", size=(81, 81)), Stats(15, 15, 5, 5, 2, 2, 200, 200), player)
+        super().__init__(x, y, "e", TextureSet.load_from_folder("firespirit", size=(81, 81)), Stats(15, 15, 5, 5, 2, 2, 500, 500), player)
         self.animationCycle = 1
         self.timeSinceLastAnimationChange = 0
         self.entityHandler = entityHandler
@@ -26,6 +26,9 @@ class FireSpirit(Monster):
             self.animationCycle = 1
 
         self.timeSinceDirChange += dt
+        if tools.distEntity(self, self.player) > 1500:
+            self.remove = True
+
         if tools.distEntity(self, self.player) > 200:
             if self.timeSinceDirChange > 1:
                 self.direction = tools.nearest_90(tools.direction(self.x, self.y, self.player.x, self.player.y))

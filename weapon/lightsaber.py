@@ -38,7 +38,7 @@ class Lightsaber(Weapon):
                 self.animationCycle = 0
                 self.attacking = False
                 self.attacked = set()
-                self.cooldown = 1
+                self.cooldown = 0.2
 
             for entity in self.entityMaster.entities:
                 if isinstance(entity, LifeForm):

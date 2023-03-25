@@ -6,7 +6,7 @@ from weapon.weapon import Weapon
 
 class Fireball(Weapon):
     def __init__(self, lifeForm, target, entityMaster):
-        super().__init__(lifeForm, TextureSet.load_from_folder("fireball"), Stats(0, 0, 1, 1, 0, 0, 250, 250), 0, entityMaster)
+        super().__init__(lifeForm, TextureSet.load_from_folder("fireball"), Stats(0, 0, 20, 20, 0, 0, 250, 250), 0, entityMaster)
         self.target = target
         self.timeSinceDirChange = 0
 

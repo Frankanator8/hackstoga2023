@@ -6,7 +6,7 @@ from weapon.weapon import Weapon
 
 class Punch(Weapon):
     def __init__(self, lifeForm, target, entityMaster):
-        super().__init__(lifeForm, TextureSet.load_from_folder("punch", size=(64, 64)), Stats(0, 0, 3, 3, 0, 0, 0, 0), 0, entityMaster)
+        super().__init__(lifeForm, TextureSet.load_from_folder("punch", size=(64, 64)), Stats(0, 0, 10, 10, 0, 0, 0, 0), 0, entityMaster)
         self.target = target
         self.wait = False
 
