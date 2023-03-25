@@ -1,5 +1,6 @@
 import pygame
 import sys
+import GUI
 from entityHandler import EntityHandler
 from camera import Camera
 from entity import Entity
@@ -23,6 +24,8 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            pass
 
     dt = clock.get_time()/1000
     keys = pygame.key.get_pressed()
