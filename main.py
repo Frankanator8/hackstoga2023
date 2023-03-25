@@ -1,3 +1,5 @@
+# https://drive.google.com/file/d/1b28Kl0MOONKUgiJsDkXVORpo7_7Llzjv/view?usp=sharing
+
 import pygame
 import sys
 
@@ -11,7 +13,6 @@ from TextureSet import TextureSet
 from monster.Final import Final
 from monster.PlainsGoblins import PlainsGoblin
 from player import Player
-from cutscene import Cutscene
 from weapon.lightsaber import Lightsaber
 from monster.FireSpirit import FireSpirit
 from world import World
@@ -19,7 +20,7 @@ import tools
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
-pygame.display.set_caption("Out of this World")
+pygame.display.set_caption("Xargrave")
 
 camera = Camera(0, 0)
 World.init()
@@ -30,7 +31,6 @@ final = Final(4000, 4000, player, entityHandler)
 entityHandler.add_entity(player)
 entityHandler.add_entity(weapon)
 clock = pygame.time.Clock()
-cutscene = Cutscene("assets/cutscenes/france_preview.gif", 0.9)
 deathScreenAlpha = 0
 deathScreen =loader.load_image("death", size=(800, 600))
 winScreen = loader.load_image("win", size=(800, 600))
@@ -115,9 +115,9 @@ while running:
             player.remove = True
 
 
-    # if sound != prevSound:
-    #     pygame.mixer.stop()
-    #     pygame.mixer.Sound.play(pygame.mixer.Sound(f'assets/audio/{sound}.wav'), loops=-1)
+    if sound != prevSound:
+        pygame.mixer.stop()
+        pygame.mixer.Sound.play(pygame.mixer.Sound(f'assets/audio/{sound}.wav'), loops=-1)
 
     clock.tick()
     pygame.display.flip()
