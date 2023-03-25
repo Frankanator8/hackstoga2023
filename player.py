@@ -6,7 +6,7 @@ from TextureSet import TextureSet
 from stats import Stats
 class Player(LifeForm):
     def __init__(self, x, y, dir):
-        super().__init__(x, y, dir, TextureSet.load_from_folder("player"), Stats(0, 0, 0, 0, 0, 0, 100, 100))
+        super().__init__(x, y, dir, TextureSet.load_from_folder("player2", size=(128, 128)), Stats(0, 0, 0, 0, 0, 0, 100, 100))
         self.animationCycle = 1
         self.timeSinceLastAnimationChange = 0
 
@@ -20,7 +20,7 @@ class Player(LifeForm):
             self.tickAnimation()
 
     def get_current_texture(self):
-        return self.textures.textures[f"{self.direction}{self.animationCycle}"]
+        return self.textures.textures[f"main_{self.direction}{self.animationCycle}"]
 
     def handle_keys(self, keys, dt):
         pressed = False

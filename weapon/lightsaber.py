@@ -1,16 +1,17 @@
 from TextureSet import TextureSet
 from lifeform import LifeForm
 from stats import Stats
-import weapon
-class Lightsaber(weapon.Weapon):
+from weapon.weapon import Weapon
+
+class Lightsaber(Weapon):
     def __init__(self, lifeform, entityMaster):
-        super().__init__(lifeform, TextureSet.load_from_folder("lightsaber"), Stats(0, 0, 10, 10, 5, 5, 0, 0))
+        super().__init__(lifeform, "lightSaber", Stats(0, 0, 20, 20, 5, 5, 0, 0), 2, entityMaster)
         self.animationCycle = 0
         self.timeSinceLastAnimation = 0
         self.prevMouseClicked = False
         self.attacking = True
         self.entityMaster = entityMaster
-        self.attacked = []
+        self.attacked = set()
 
     def tick(self, dt):
         self.y = self.lifeform.y
@@ -29,21 +30,22 @@ class Lightsaber(weapon.Weapon):
 
         if self.attacking:
             self.timeSinceLastAnimation += dt
-            if self.timeSinceLastAnimation > 0.25:
+            if self.timeSinceLastAnimation > 0.1:
                 self.timeSinceLastAnimation = 0
                 self.animationCycle += 1
 
             if self.animationCycle == 4:
                 self.animationCycle = 0
                 self.attacking = False
-                self.attacked = []
+                self.attacked = set()
                 self.cooldown = 1
 
             for entity in self.entityMaster.entities:
                 if isinstance(entity, LifeForm):
                     if entity.collides_with(self):
-                        self.attacked.append(entity)
-                        entity.deal_damage(self)
+                        if entity not in self.attacked:
+                            self.attacked.add(entity)
+                            entity.deal_damage(self)
 
 
     def get_current_texture(self):

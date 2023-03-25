@@ -4,7 +4,7 @@ class Entity:
         self.y = y
         self.direction = direction
         self.textures = textures
-
+        self.remove = False
     def get_current_texture(self):
         return self.textures.defaultTexture()
 

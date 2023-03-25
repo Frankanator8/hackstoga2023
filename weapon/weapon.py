@@ -10,7 +10,7 @@ class Weapon(Entity):
         self.cooldown = 0
         self.defaultCooldown = cooldown
         self.entityMaster = entityMaster
-
+    
 
 
 

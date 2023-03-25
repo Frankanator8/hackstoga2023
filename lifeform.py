@@ -6,4 +6,6 @@ class LifeForm(Entity):
         self.stats = stats
 
     def deal_damage(self, weapon):
-        pass
+        self.stats.hp -= 1 # round(weapon.stats.atk + weapon.lifeform.stats.atk * 0.2 - self.stats.defense)
+        if self.stats.hp <= 0:
+            self.remove = True

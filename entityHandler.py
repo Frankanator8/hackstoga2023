@@ -14,8 +14,13 @@ class EntityHandler:
             screen.blit(entity.get_current_texture(), (trueX, trueY))
 
     def tick(self, dt):
+        good = []
         for entity in self.entities:
             entity.tick(dt)
+            if not entity.remove:
+                good.append(entity)
+
+        self.entities = good
 
 
     def handle_keys(self, keys, dt):

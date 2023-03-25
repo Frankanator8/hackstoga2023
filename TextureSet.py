@@ -8,11 +8,11 @@ class TextureSet:
         self.textures = kwargs
 
     @classmethod
-    def load_from_folder(cls, folder):
+    def load_from_folder(cls, folder, size=None):
         texs = {}
         for file in os.listdir(f"assets/images/{folder}"):
             name = file.split(".")[0]
-            texs[name] = loader.load_image(f"{folder}/{name}")
+            texs[name] = loader.load_image(f"{folder}/{name}", size=size)
 
         return TextureSet(**texs)
 

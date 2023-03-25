@@ -9,6 +9,7 @@ from TextureSet import TextureSet
 from player import Player
 from cutscene import Cutscene
 from weapon.lightsaber import Lightsaber
+from monster.FireSpirit import FireSpirit
 
 pygame.init()
 screen = pygame.display.set_mode((800, 600))
@@ -20,6 +21,7 @@ player = Player(0, 0, "e")
 weapon = Lightsaber(player, entityHandler)
 entityHandler.add_entity(player)
 entityHandler.add_entity(weapon)
+entityHandler.add_entity(FireSpirit(10, 10, player, entityHandler))
 entityHandler.add_entity(Entity(0, 0, "n", TextureSet.load_from_folder("player")))
 clock = pygame.time.Clock()
 cutscene = Cutscene("assets/cutscenes/france_preview.gif", 0.9)
@@ -43,9 +45,9 @@ while running:
     entityHandler.render(screen)
     entityHandler.tick(dt)
     entityHandler.handle_keys(keys, dt)
-    entityHandler.handle_mouse(mousePos, mousePressed)
+    entityHandler.handle_mouse(mousePos, mousePressed, dt)
     camera.follow(player)
-    cutscene.play(screen, dt)
+    # cutscene.play(screen, dt)
     clock.tick()
     pygame.display.flip()
 
