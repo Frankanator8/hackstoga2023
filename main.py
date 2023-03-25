@@ -1,5 +1,6 @@
 import pygame
 import sys
+import GUI
 from entityHandler import EntityHandler
 from camera import Camera
 from entity import Entity
@@ -17,6 +18,8 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            pass
 
     screen.fill((0, 0, 0))
     entityHandler.render(screen)
