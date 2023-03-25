@@ -66,6 +66,8 @@ class World:
             for y in range(-2, 3):
                 pixelX = int(cameraX + x)
                 pixelY = int(cameraY + y)
+                if pixelX < 0 or pixelX >= len(self.imageData[0]) or pixelY < 0 or pixelY >= len(self.imageData):
+                    continue
                 color = self.imageData[pixelY][pixelX]
                 if color == (47, 54, 153, 255):
                     if random.randint(1, 1000) == 69:
