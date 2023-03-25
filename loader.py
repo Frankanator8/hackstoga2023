@@ -10,3 +10,7 @@ def load_audio(name):
     return sound
 def play_audio(sound):
     pygame.mixer.Sound.play(sound)
+def pause_audio():
+    pygame.mixer.pause()
+def resume_audio():
+    pygame.mixer.unpause()
