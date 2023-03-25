@@ -7,10 +7,12 @@ from weapon.Punch import Punch
 
 class PlainsGoblin(Monster):
     def __init__(self, x, y, player, entityHandler):
-        super().__init__(x, y, "e", TextureSet.load_from_folder("player1"), Stats(30, 30, 15, 15, 15, 15, 125, 125), player)
+        super().__init__(x, y, "e", TextureSet.load_from_folder("player2", size=(128, 128)), Stats(30, 30, 15, 15, 15, 15, 75, 75), player)
         self.entityHandler = entityHandler
         self.animationCycle = 1
         self.timeSinceLastAnimationChange = 0
+        self.cooldown = 0
+        self.timeSinceDirChange = 0
 
     def get_current_texture(self):
         return super().render_health_bar(self.textures.textures[f"main_{self.direction}{self.animationCycle}"])
@@ -18,12 +20,16 @@ class PlainsGoblin(Monster):
         self.timeSinceLastAnimationChange += dt
         if self.timeSinceLastAnimationChange > 0.1:
             self.animationCycle += 1
+            self.timeSinceLastAnimationChange = 0
 
         if self.animationCycle >= 5:
             self.animationCycle = 1
 
-        if tools.distEntity(self, self.player) > 200:
-            self.direction = tools.nearest_90(tools.direction(self.x, self.y, self.player.x, self.player.y))
+        self.timeSinceDirChange += dt
+        if tools.distEntity(self, self.player) > 20:
+            if self.timeSinceDirChange > 1:
+                self.timeSinceDirChange = 0
+                self.direction = tools.nearest_90(tools.direction(self.x, self.y, self.player.x, self.player.y))
             if self.direction == "n":
                 self.y -= self.stats.speed * dt
 
@@ -35,6 +41,8 @@ class PlainsGoblin(Monster):
 
             if self.direction == "w":
                 self.x -= self.stats.speed * dt
+
+
 
         else:
             if self.cooldown == 0:

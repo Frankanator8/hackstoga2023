@@ -5,7 +5,7 @@ from weapon.weapon import Weapon
 
 class Lightsaber(Weapon):
     def __init__(self, lifeform, entityMaster):
-        super().__init__(lifeform, "lightSaber", Stats(0, 0, 20, 20, 5, 5, 0, 0), 2, entityMaster)
+        super().__init__(lifeform, TextureSet.load_from_folder("lightsaber"), Stats(0, 0, 20, 20, 5, 5, 0, 0), 2, entityMaster)
         self.animationCycle = 0
         self.timeSinceLastAnimation = 0
         self.prevMouseClicked = False

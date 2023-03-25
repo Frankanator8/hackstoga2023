@@ -6,6 +6,7 @@ from camera import Camera
 from entity import Entity
 import loader
 from TextureSet import TextureSet
+from monster.PlainsGoblins import PlainsGoblin
 from player import Player
 from cutscene import Cutscene
 from weapon.lightsaber import Lightsaber
@@ -21,7 +22,8 @@ player = Player(0, 0, "e")
 weapon = Lightsaber(player, entityHandler)
 entityHandler.add_entity(player)
 entityHandler.add_entity(weapon)
-entityHandler.add_entity(FireSpirit(10, 10, player, entityHandler))
+entityHandler.add_entity(PlainsGoblin(10, 10, player, entityHandler))
+entityHandler.add_entity(FireSpirit(50, 50, player, entityHandler))
 clock = pygame.time.Clock()
 cutscene = Cutscene("assets/cutscenes/france_preview.gif", 0.9)
 
@@ -47,6 +49,7 @@ while running:
     entityHandler.handle_mouse(mousePos, mousePressed, dt)
     camera.follow(player)
     # cutscene.play(screen, dt)
+
     clock.tick()
     pygame.display.flip()
 
