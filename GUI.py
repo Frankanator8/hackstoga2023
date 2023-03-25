@@ -1,7 +1,7 @@
 import pygame
 import loader
-loadingImage = loader.load_image("loadingImage")
-startingImage = loader.load_image("startingImage")
+loadingImage = loader.loadImage("loadingImage.py")
+startingImage = loader.loadImage("startingImage.py")
 def draw(screen, mode):
     font = pygame.font.SysFont('Times new Roman', 30)
     buttons = []
@@ -11,3 +11,4 @@ def draw(screen, mode):
         buttons = []
         start = pygame.draw.rect(screen, 'green', (500,500,100,100))
         buttons.append(start)
+        
