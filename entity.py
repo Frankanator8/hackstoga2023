@@ -17,3 +17,18 @@ class Entity:
 
     def handle_keys(self, keys, dt):
         pass
+
+    def handle_mouse(self, mousePos, mousePressed, dt):
+        pass
+
+    def collides_with(self, entity):
+        if self.x + self.size[0]/2 < entity.x - entity.size[0]/2 or self.x - self.size[0]/2 > entity.x + entity.size[0]/2 or \
+            self.y + self.size[1]/2 < entity.y - entity.size[1]/2 or self.y - self.size[1]/2 > entity.y + entity.size[1]/2:
+            return False
+
+        else:
+            return True
+
+
+
+

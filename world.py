@@ -5,3 +5,4 @@ class World(Entity):
         super().__init__(0, 0, texture, "e")
         self.spawn_point = spawn_point
         self.collision_texture = collision_texture
+        self.id = id

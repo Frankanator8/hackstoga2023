@@ -21,3 +21,8 @@ class EntityHandler:
     def handle_keys(self, keys, dt):
         for entity in self.entities:
             entity.handle_keys(keys, dt)
+
+    def handle_mouse(self, mousePos, mousePressed, dt):
+        for entity in self.entities:
+            entity.handle_mouse(mousePos, mousePressed, dt)
+
