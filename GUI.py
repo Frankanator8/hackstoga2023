@@ -1,7 +1,7 @@
 import pygame
 import loader
-loadingImage = loader.loadImage("loadingImage.py")
-startingImage = loader.loadImage("startingImage.py")
+loadingImage = loader.load_image("loadingImage")
+startingImage = loader.load_image("startingImage")
 def draw(screen, mode):
     font = pygame.font.SysFont('Times new Roman', 30)
     buttons = []
