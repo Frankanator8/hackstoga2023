@@ -22,13 +22,14 @@ clock = pygame.time.Clock()
 cutscene = Cutscene("assets/cutscenes/france_preview.gif", 0.9)
 
 running = True
+backgroundType = "loading"
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             pass
-
+            
     dt = clock.get_time()/1000
     keys = pygame.key.get_pressed()
     screen.fill((0, 0, 0))

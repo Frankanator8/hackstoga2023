@@ -5,3 +5,6 @@ def load_image(name, size=None):
     if size != None:
         image = pygame.transform.scale(image, size)
     return image
+def load_audio(name):
+    sound = pygame.mixer.Sound(f'assets/images/{name}.wav')
+    return sound
