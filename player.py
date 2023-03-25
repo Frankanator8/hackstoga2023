@@ -6,7 +6,7 @@ from TextureSet import TextureSet
 from stats import Stats
 class Player(LifeForm):
     def __init__(self, x, y, dir):
-        super().__init__(x, y, dir, TextureSet.load_from_folder("player2", size=(128, 128)), Stats(0, 0, 0, 0, 0, 0, 100, 100))
+        super().__init__(x, y, dir, TextureSet.load_from_folder("player3", size=(128, 128)), Stats(40, 40, 10, 10, 10, 10, 100, 100))
         self.animationCycle = 1
         self.timeSinceLastAnimationChange = 0
 

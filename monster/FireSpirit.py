@@ -7,14 +7,14 @@ from weapon.Fireball import Fireball
 
 class FireSpirit(Monster):
     def __init__(self, x, y, player, entityHandler):
-        super().__init__(x, y, "e", TextureSet.load_from_folder("player"), Stats(15, 15, 5, 5, 2, 2, 200, 200), player)
+        super().__init__(x, y, "e", TextureSet.load_from_folder("player2"), Stats(15, 15, 5, 5, 2, 2, 200, 200), player)
         self.animationCycle = 1
         self.timeSinceLastAnimationChange = 0
         self.entityHandler = entityHandler
         self.cooldown = 0
 
     def get_current_texture(self):
-        return super().render_health_bar(self.textures.textures[f"{self.direction}{self.animationCycle}"])
+        return super().render_health_bar(self.textures.textures[f"main_{self.direction}{self.animationCycle}"])
 
     def tick(self, dt):
         self.timeSinceLastAnimationChange += dt

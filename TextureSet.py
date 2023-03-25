@@ -9,6 +9,7 @@ class TextureSet:
 
     @classmethod
     def load_from_folder(cls, folder, size=None):
+        print(folder)
         texs = {}
         for file in os.listdir(f"assets/images/{folder}"):
             name = file.split(".")[0]

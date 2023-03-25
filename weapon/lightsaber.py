@@ -44,8 +44,9 @@ class Lightsaber(Weapon):
                 if isinstance(entity, LifeForm):
                     if entity.collides_with(self):
                         if entity not in self.attacked:
-                            self.attacked.add(entity)
-                            entity.deal_damage(self)
+                            if entity != self.lifeform:
+                                self.attacked.add(entity)
+                                entity.deal_damage(self)
 
 
     def get_current_texture(self):

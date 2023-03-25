@@ -29,5 +29,6 @@ class EntityHandler:
 
     def handle_mouse(self, mousePos, mousePressed, dt):
         for entity in self.entities:
+            print(type(entity))
             entity.handle_mouse(mousePos, mousePressed, dt)
 
