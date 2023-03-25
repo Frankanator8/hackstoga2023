@@ -22,7 +22,6 @@ clock = pygame.time.Clock()
 cutscene = Cutscene("assets/cutscenes/france_preview.gif", 0.9)
 
 running = True
-backgroundType = "loading"
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
