@@ -22,7 +22,6 @@ weapon = Lightsaber(player, entityHandler)
 entityHandler.add_entity(player)
 entityHandler.add_entity(weapon)
 entityHandler.add_entity(FireSpirit(10, 10, player, entityHandler))
-entityHandler.add_entity(Entity(0, 0, "n", TextureSet.load_from_folder("player")))
 clock = pygame.time.Clock()
 cutscene = Cutscene("assets/cutscenes/france_preview.gif", 0.9)
 

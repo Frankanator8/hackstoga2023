@@ -31,5 +31,4 @@ class Fireball(Weapon):
             for entity in self.entityMaster.entities:
                 if isinstance(entity, LifeForm):
                     if entity.collides_with(self):
-                        if entity not in self.attacked:
-                            entity.deal_damage(self)
+                        entity.deal_damage(self)
