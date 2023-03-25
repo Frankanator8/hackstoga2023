@@ -9,6 +9,15 @@ class EntityHandler:
     def render(self, screen):
         camera = self.camera
         for entity in self.entities:
-            trueX = entity.x - camera.x
-            trueY = entity.y - camera.y
-            screen.blit(entity.texture, (trueX, trueY))
+            trueX = entity.x - camera.x + screen.get_width()/2 - entity.size[0]/2
+            trueY = entity.y - camera.y + screen.get_height()/2 - entity.size[1]/2
+            screen.blit(entity.get_current_texture(), (trueX, trueY))
+
+    def tick(self, dt):
+        for entity in self.entities:
+            entity.tick(dt)
+
+
+    def handle_keys(self, keys, dt):
+        for entity in self.entities:
+            entity.handle_keys(keys, dt)
