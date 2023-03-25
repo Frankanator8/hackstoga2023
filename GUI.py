@@ -11,3 +11,4 @@ def draw(screen, mode):
         buttons = []
         start = pygame.draw.rect(screen, 'green', (500,500,100,100))
         buttons.append(start)
+        
