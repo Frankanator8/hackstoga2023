@@ -1,5 +1,7 @@
 import pygame
 import sys
+
+from Text import Text
 # import GUI
 from entityHandler import EntityHandler
 from camera import Camera
@@ -22,7 +24,7 @@ pygame.display.set_caption("Out of this World")
 camera = Camera(0, 0)
 World.init()
 entityHandler = EntityHandler(camera)
-player = Player(4000, 4000, "e")
+player = Player(10, 10, "e")
 weapon = Lightsaber(player, entityHandler)
 final = Final(4000, 4000, player, entityHandler)
 entityHandler.add_entity(player)
@@ -31,6 +33,7 @@ clock = pygame.time.Clock()
 cutscene = Cutscene("assets/cutscenes/france_preview.gif", 0.9)
 deathScreenAlpha = 0
 deathScreen =loader.load_image("death", size=(800, 600))
+winScreen = loader.load_image("win", size=(800, 600))
 world = World("Xargrave", "assets/images/plainsMap.png", (0, 0))
 sound = ""
 finalBoss = False
@@ -50,6 +53,7 @@ while running:
     mousePressed = pygame.mouse.get_pressed()[0]
     screen.fill((0, 0, 0))
     screen.blit(loader.load_image("space", (800, 600)), (0, 0))
+    Text("Press [I] for Info", ("Calibri", 15), (0, 0, 0), (10, 10)).render(screen)
     if not finalBoss:
         world.render(camera, screen)
     entityHandler.render(screen)
@@ -71,11 +75,20 @@ while running:
         if not finalBoss:
             world.tick(camera, entityHandler, player)
         # cutscene.play(screen, dt)
+        if keys[pygame.K_i]:
+            screen.fill((0, 0, 0))
+            with open("assets/desc.txt") as f:
+                Text(f.read(), ("Calibri", 18), (255, 255, 255), (10, 10)).render(screen)
+
 
     else:
         deathScreenAlpha += 128 * dt
         deathScreen.set_alpha(deathScreenAlpha)
-        screen.blit(deathScreen, (0, 0))
+        if final.stats.hp > 0:
+            screen.blit(deathScreen, (0, 0))
+
+        else:
+            screen.blit(winScreen, (0, 0))
 
     prevSound = sound
     if not finalBoss:
@@ -96,6 +109,11 @@ while running:
         if not finalBoss:
             entityHandler.add_entity(final)
         finalBoss = True
+
+    if finalBoss:
+        if final.stats.hp <= 0:
+            player.remove = True
+
 
     # if sound != prevSound:
     #     pygame.mixer.stop()

@@ -7,14 +7,13 @@ from weapon.Fireball import Fireball
 
 class Final(Monster):
     def __init__(self, x, y, player, entityHandler):
-        super().__init__(x, y, "e", TextureSet.load_from_folder("final", size=(250, 250)), Stats(15, 15, 5, 5, 2, 2, 500, 500), player)
+        super().__init__(x, y, "e", TextureSet.load_from_folder("final", size=(500, 500)), Stats(300, 300, 5, 5, 2, 2, 100, 100), player)
         self.entityHandler = entityHandler
         self.cooldown = 0
         self.timeSinceDirChange = 0
 
     def get_current_texture(self):
-        print("final boss texture")
-        return super().render_health_bar(self.textures.textures["final_boss"])
+        return self.render_health_bar(self.textures.textures["final_boss"])
 
     def tick(self, dt):
         if tools.distEntity(self, self.player) > 200:
@@ -26,13 +25,13 @@ class Final(Monster):
                 self.y -= self.stats.speed * dt
 
             if self.direction == "e":
-                self.x += self.stats.speed * dt
+                self.x -= self.stats.speed * dt
 
             if self.direction == "s":
                 self.y += self.stats.speed * dt
 
             if self.direction == "w":
-                self.x -= self.stats.speed * dt
+                self.x += self.stats.speed * dt
 
         else:
             if self.cooldown == 0:

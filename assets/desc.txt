@@ -1,0 +1,21 @@
+Welcome to Xargrave!
+This used to be a prosperous world of plains ruled by the peaceful
+and benevolent goblins until the corruption struck.
+Part of the world has been deformed and is infested by corruption,
+and the goblins have been driven to the brink of insanity.
+You’re the only one with the power to put an end to this madness.
+Navigate through the starry skies and barren plains of a different world
+to bring peace and prosperity to Xargrave and save the world.
+To do so, you must vanquish the source of this evil and corruption,
+
+The Corrupted Titan.
+
+
+Objectives:
+Kill 20 corrupted goblins
+World fades out/tiles fade one by one
+Starry background
+Final boss
+
+Boss attack pattern:
+Shoot corrupted fireballs
