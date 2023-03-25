@@ -1,3 +1,3 @@
 import pygame
-
-loadingImage = pygame.image.load("loadingImage.png")
+import loader
+loadingImage = loader.loadImage("loadingImage.py")
