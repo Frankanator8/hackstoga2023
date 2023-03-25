@@ -3,3 +3,4 @@ class Entity:
         self.x = x
         self.y = y
         self.direction = direction
+        self.texture = texture
