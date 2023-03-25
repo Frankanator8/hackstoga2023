@@ -46,8 +46,11 @@ while running:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             pass
-            
+
+
     dt = clock.get_time()/1000
+    if player.stats.hp < player.stats.defaultHP:
+        player.stats.hp += 0.5 * dt
     keys = pygame.key.get_pressed()
     mousePos = pygame.mouse.get_pos()
     mousePressed = pygame.mouse.get_pressed()[0]
