@@ -8,3 +8,5 @@ def load_image(name, size=None):
 def load_audio(name):
     sound = pygame.mixer.Sound(f'assets/images/{name}.wav')
     return sound
+def play_audio(sound):
+    pygame.mixer.Sound.play(sound)
